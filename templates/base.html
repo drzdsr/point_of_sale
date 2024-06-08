@@ -1,0 +1,38 @@
+{% load static %}
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS System</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <style>
+        /* Add any custom styles here */
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><br>Point of Sale</a>
+            <ul class="nav nav-tabs">
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'dashboard' %}">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.path == '/products/' %}active{% endif %}" href="{% url 'product_list' %}">Products</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.path == '/sales/' %}active{% endif %}" href="{% url 'create_sale' %}">Sales</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.path == '/customers/' %}active{% endif %}" href="{% url 'customer_list' %}">Customers</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.path == '/inventory/' %}active{% endif %}" href="{% url 'inventory_list' %}">Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.path == '/reports/' %}active{% endif %}" href="{% url 'sales_report' %}">Reports</a></li>
+                </ul>
+            </ul>
+            <ul class="nav justify-content-end">
+                <li class="nav-item"><button class="logout-btn btn btn-danger">Logout</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

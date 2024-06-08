@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Sales List{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Sales List</h1>
+    <ul class="list-group mt-3">
+        {% for sale in sales %}
+            <li class="list-group-item"><a href="{% url 'sale_detail' sale_id=sale.sale_id %}">Sale ID: {{ sale.sale_id }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

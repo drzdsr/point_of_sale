@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Sale Detail{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Sale Detail</h1>
+    <p><strong>Sale ID:</strong> {{ sale.sale_id }}</p>
+    <p><strong>Date Time Stamp:</strong> {{ sale.date_time_stamp }}</p>
+    <p><strong>Status:</strong> {{ sale.status }}</p>
+    <p><strong>Total Amount:</strong> {{ sale.total_amount }}</p>
+    <p><strong>Payment Method:</strong> {{ sale.payment_method }}</p>
+    <p><strong>Bank Name:</strong> {{ sale.bank_name }}</p>
+    <h2>Sale Details:</h2>
+    <ul>
+        {% for sale_detail in sale_details %}
+            <li><strong>Product:</strong> {{ sale_detail.product }}, <strong>Quantity:</strong> {{ sale_detail.quantity }}, <strong>Unit Price:</strong> {{ sale_detail.unit_price }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
